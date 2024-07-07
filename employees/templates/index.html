@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% block title %} Employees List App {% endblock %} 
+{% block content %}
+
+<div class="container mx-auto font-sans overflow-x-auto">
+  <table class="min-w-full divide-y divide-gray-200">
+    {% if employees %}
+    <thead class="bg-gray-100 whitespace-nowrap">
+      <tr>
+        <th
+          class="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
+        >
+          Name
+        </th>
+        <th
+          class="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
+        >
+          Email
+        </th>
+        <th
+          class="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
+        >
+          Role
+        </th>
+        <th
+          class="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
+        >
+          Joined At
+        </th>
+        <th
+          class="px-4 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"
+        >
+          Actions
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="bg-white divide-y divide-gray-200 whitespace-nowrap">
+        {% for employee in employees %}
+      <tr>
+        <td class="px-4 py-4 text-sm text-gray-800">{{ employee.name }}</td>
+        <td class="px-4 py-4 text-sm text-gray-800">{{ employee.email }}</td>
+        <td class="px-4 py-4 text-sm text-gray-800">{{ employee.position }}</td>
+        <td class="px-4 py-4 text-sm text-gray-800">{{ employee.joinAt }}</td>
+        <td class="px-4 py-4 text-sm text-gray-800">
+          <a href="{% url 'update' id=employee.id %}">
+            <button class="text-blue-600 mr-4">Edit</button>
+          </a>
+          <a href="{% url 'delete' id=employee.id %}">
+            <button class="text-red-600 mr-4">Delete</button>
+          </a>
+        </td>
+      </tr>
+        {% endfor %}
+        {% else %}
+        <p>No data found.</p>
+      </tbody>
+      {% endif  %}
+  </table>
+</div>
+
+{% endblock %}

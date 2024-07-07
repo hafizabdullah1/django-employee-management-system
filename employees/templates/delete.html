@@ -1,0 +1,18 @@
+{% extends "base.html" %} 
+{% block title %} Employees List App {% endblock %} 
+{% block content %}
+
+
+<h1 class="text-center text-3xl font-bold m-6 underline">Delete Employee</h1>
+<form class="font-[sans-serif] max-w-4xl mx-auto" method="post" enctype="multipart/form-data">
+  {%csrf_token%}
+
+  <h3>Are you sure ? Delete: <strong style="text-transform: capitalize;">{{employee.name}}</strong> record</h3>
+    
+        <button type="submit"
+      class="mt-10 px-6 py-2.5 w-full text-sm bg-[#007bff] text-white hover:bg-[#006bff] rounded-sm">Delete</button>
+</form>
+
+
+
+{% endblock %}

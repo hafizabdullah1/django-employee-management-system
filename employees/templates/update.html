@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+{% block title %} Employees List App {% endblock %} 
+{% block content %}
+
+
+<h1 class="text-center text-3xl font-bold m-6 underline">Update Employee Data</h1>
+<form class="font-[sans-serif] max-w-4xl mx-auto" method="post" enctype="multipart/form-data">
+  {%csrf_token%}
+  <div class="grid sm:grid-cols-2 gap-6">
+    {% for field in form %}
+      <div class="relative flex items-center">
+        <input type="text" placeholder="{{field.name}}" name="{{field.name}}" value="{{field.value}}"
+          class="px-2 py-3 bg-white text-black w-full text-sm border-b-2 focus:border-[#007bff] outline-none" />
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" class="w-[18px] h-[18px] absolute right-2"
+          viewBox="0 0 24 24">
+          <circle cx="10" cy="7" r="6" data-original="#000000"></circle>
+          <path
+            d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z"
+            data-original="#000000"></path>
+        </svg>
+      </div>
+    {% endfor %}
+    </div>
+    
+        <button type="submit"
+      class="mt-10 px-6 py-2.5 w-full text-sm bg-[#007bff] text-white hover:bg-[#006bff] rounded-sm">Submit</button>
+</form>
+
+
+
+{% endblock %}
